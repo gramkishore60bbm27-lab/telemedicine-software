@@ -83,11 +83,17 @@ if (window.location.pathname === '/consultation') {
         // Copy Link Button
         const copyLinkBtn = document.getElementById('copyLinkBtn');
         if (copyLinkBtn) {
-            copyLinkBtn.addEventListener('click', () => {
+            copyLinkBtn.addEventListener('click', async () => {
                 const roomLink = document.getElementById('roomLink');
-                roomLink.select();
-                document.execCommand('copy');
-                showNotification('Room link copied to clipboard!', 'success');
+                try {
+                    await navigator.clipboard.writeText(roomLink.value);
+                    showNotification('Room link copied to clipboard!', 'success');
+                } catch (err) {
+                    // Fallback for browsers that don't support Clipboard API
+                    roomLink.select();
+                    document.execCommand('copy');
+                    showNotification('Room link copied to clipboard!', 'success');
+                }
             });
         }
         
