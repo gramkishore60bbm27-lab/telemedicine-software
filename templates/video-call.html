@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Call - Telemedicine Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/video-call.css') }}">
+    <script src='https://meet.jit.si/external_api.js'></script>
+</head>
+<body class="video-call-body">
+    <div class="video-call-container">
+        <!-- Header with controls -->
+        <div class="video-header">
+            <div class="logo-small">🏥 Telemedicine</div>
+            <div class="room-info">
+                <span id="roomIdDisplay">Room: {{ room_id }}</span>
+            </div>
+            <div class="header-actions">
+                <button id="endCallBtn" class="btn btn-danger">
+                    📞 End Call
+                </button>
+            </div>
+        </div>
+
+        <!-- Jitsi Meet Video Container -->
+        <div id="jitsi-meet-container"></div>
+
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading-screen">
+            <div class="loading-content">
+                <div class="spinner-large"></div>
+                <h2>Connecting to consultation...</h2>
+                <p>Please wait while we set up your video call</p>
+            </div>
+        </div>
+
+        <!-- Error Screen -->
+        <div id="errorScreen" class="error-screen" style="display: none;">
+            <div class="error-content">
+                <div class="error-icon">⚠️</div>
+                <h2>Unable to Join Consultation</h2>
+                <p id="errorMessage">The consultation room could not be found or has ended.</p>
+                <div class="error-actions">
+                    <a href="/consultation" class="btn btn-primary">Go to Consultations</a>
+                    <a href="/" class="btn btn-secondary">Go to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Call Confirmation Modal -->
+    <div id="endCallModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>End Consultation?</h3>
+            <p>Are you sure you want to end this consultation?</p>
+            <div class="modal-actions">
+                <button id="confirmEndBtn" class="btn btn-danger">Yes, End Call</button>
+                <button id="cancelEndBtn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Room ID from server
+        const ROOM_ID = "{{ room_id }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/video-call.js') }}"></script>
+</body>
+</html>
