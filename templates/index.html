@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telemedicine Platform - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/video-call.css') }}">
+    <style>
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin: 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary-large {
+            background: white;
+            color: #667eea;
+            border: 2px solid white;
+        }
+        
+        .btn-primary-large:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        .btn-secondary-large {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary-large:hover {
+            background: white;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <h2>🏥 Telemedicine Platform</h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/consultation">Consultations</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <h1>Welcome to Telemedicine</h1>
+            <p>Connect with healthcare professionals from anywhere, anytime</p>
+            <div class="cta-buttons">
+                <a href="/consultation" class="btn-large btn-primary-large">Start Consultation</a>
+                <a href="#features" class="btn-large btn-secondary-large">Learn More</a>
+            </div>
+        </div>
+
+        <div id="features" class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🎥</div>
+                <h3>HD Video Calls</h3>
+                <p>High-quality video consultations with secure, encrypted connections using Jitsi Meet technology.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Real-time Chat</h3>
+                <p>Communicate via text chat during video calls for sharing notes and information.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🖥️</div>
+                <h3>Screen Sharing</h3>
+                <p>Share medical reports, test results, and documents seamlessly during consultations.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Friendly</h3>
+                <p>Access consultations from any device - desktop, tablet, or smartphone.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure & Private</h3>
+                <p>End-to-end encryption ensures your medical consultations remain confidential.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Easy Scheduling</h3>
+                <p>Create and join consultations with a simple room ID or link sharing system.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Telemedicine Platform. All rights reserved.</p>
+            <p>Built with Flask and Jitsi Meet</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultation - Telemedicine Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/video-call.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <h2>🏥 Telemedicine Platform</h2>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/consultation" class="active">Consultations</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <div class="section-grid">
+                <!-- Create Consultation Section -->
+                <div class="card">
+                    <h2>🩺 Create New Consultation</h2>
+                    <p class="card-description">Doctors: Create a new video consultation room for your patient.</p>
+                    
+                    <form id="createConsultationForm" class="form">
+                        <div class="form-group">
+                            <label for="doctorName">Doctor Name *</label>
+                            <input type="text" id="doctorName" name="doctorName" required 
+                                   placeholder="Dr. John Smith">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="patientName">Patient Name *</label>
+                            <input type="text" id="patientName" name="patientName" required 
+                                   placeholder="Jane Doe">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Create Consultation Room
+                        </button>
+                    </form>
+                    
+                    <!-- Room Link Display (Hidden initially) -->
+                    <div id="roomLinkSection" class="room-link-section" style="display: none;">
+                        <div class="success-message">
+                            <h3>✅ Consultation Room Created!</h3>
+                            <p>Share this link with your patient:</p>
+                        </div>
+                        
+                        <div class="link-display">
+                            <input type="text" id="roomLink" readonly class="link-input">
+                            <button id="copyLinkBtn" class="btn btn-secondary">📋 Copy Link</button>
+                        </div>
+                        
+                        <div class="link-actions">
+                            <a id="joinRoomBtn" href="#" class="btn btn-primary">Join Room Now</a>
+                            <button id="createAnotherBtn" class="btn btn-outline">Create Another</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Join Consultation Section -->
+                <div class="card">
+                    <h2>👤 Join Consultation</h2>
+                    <p class="card-description">Patients: Enter the room ID provided by your doctor to join the consultation.</p>
+                    
+                    <form id="joinConsultationForm" class="form">
+                        <div class="form-group">
+                            <label for="roomId">Room ID *</label>
+                            <input type="text" id="roomId" name="roomId" required 
+                                   placeholder="Enter the room ID">
+                            <small>The room ID is a unique code provided by your doctor</small>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Join Consultation
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Active Consultations Section -->
+            <div class="card">
+                <h2>📋 Active Consultations</h2>
+                <p class="card-description">View all scheduled and ongoing consultations.</p>
+                
+                <button id="refreshConsultationsBtn" class="btn btn-secondary">
+                    🔄 Refresh List
+                </button>
+                
+                <div id="consultationsListContainer">
+                    <div id="loadingSpinner" class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Loading consultations...</p>
+                    </div>
+                    
+                    <div id="consultationsList" class="consultations-list"></div>
+                    
+                    <div id="noConsultations" class="empty-state" style="display: none;">
+                        <p>No active consultations at the moment.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Notification Toast -->
+        <div id="notification" class="notification"></div>
+
+        <footer>
+            <p>&copy; 2024 Telemedicine Platform. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/video-call.js') }}"></script>
+</body>
+</html>
